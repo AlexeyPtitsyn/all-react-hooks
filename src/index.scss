@@ -1,0 +1,93 @@
+/**
+ * @file Styles for all document components.
+ * @author Alexey Ptitsyn <alexey.ptitsyn@gmail.com>
+ * @copyright Alexey Ptitsyn <alexey.ptitsyn@gmail.com>, 2022
+ */
+
+body {
+  margin: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+
+  background: #ECEFF1;
+  color: #263238;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: 50px auto 50px;
+  grid-template-rows: 50px auto auto auto 50px;
+  row-gap: 20px;
+  grid-template-areas:
+    ". . ."
+    ". header ."
+    ". main ."
+    ". footer ."
+    ". . .";
+}
+
+header {
+  grid-area: header;
+  padding: 10px;
+
+  background: #CFD8DC;
+  border-radius: 3px;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}
+
+nav {
+  padding: 0 0 5px;
+
+  border-bottom: 1px solid #78909C;
+}
+
+.nav-link {
+  padding: 0 5px;
+
+  color: #303F9F;
+
+  &:hover {
+    color: #B71C1C;
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:not(:last-child) {
+    border-right: 1px solid #78909C;
+  }
+}
+
+
+main {
+  grid-area: main;
+  padding: 10px;
+
+  background: #CFD8DC;
+  border-radius: 3px;
+}
+
+article {
+  margin-top: 10px;
+}
+
+footer {
+  grid-area: footer;
+  padding: 10px;
+
+  font-size: 12px;
+
+  background: #CFD8DC;
+  border-radius: 3px;
+  color: #546E7A;
+}
+
+button {
+  margin: 0 3px;
+
+  cursor: pointer;
+}
