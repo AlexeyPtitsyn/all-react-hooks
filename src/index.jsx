@@ -12,6 +12,7 @@ import './index.scss';
 import IntroComponent from './components/IntroComponent.jsx';
 import StateComponent from './components/StateComponent.jsx';
 import EffectComponent from './components/EffectComponent.jsx';
+import RefComponent from './components/RefComponent.jsx';
 
 /**
  * Root react component.
@@ -32,6 +33,7 @@ function MainComponent() {
           <a className="nav-link" href="#" onClick={changePage} data-name="index">Index</a>
           <a className="nav-link" href="#" onClick={changePage} data-name="useState">useState</a>
           <a className="nav-link" href="#" onClick={changePage} data-name="useEffect">useEffect</a>
+          <a className="nav-link" href="#" onClick={changePage} data-name="useRef">useRef</a>
         </nav>
 
         <article>
@@ -44,7 +46,11 @@ function MainComponent() {
           }
 
           {page == 'useEffect' &&
-          <EffectComponent />
+            <EffectComponent />
+          }
+
+          {page == 'useRef' &&
+            <RefComponent />
           }
         </article>
       </main>
