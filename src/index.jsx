@@ -14,6 +14,7 @@ import StateComponent from './components/StateComponent.jsx';
 import EffectComponent from './components/EffectComponent.jsx';
 import RefComponent from './components/RefComponent.jsx';
 import MemoComponent from './components/MemoComponent.jsx';
+import CallbackComponent from './components/CallbackComponent.jsx';
 
 /**
  * Root react component.
@@ -36,6 +37,7 @@ function MainComponent() {
           <a className="nav-link" href="#" onClick={changePage} data-name="useEffect">useEffect</a>
           <a className="nav-link" href="#" onClick={changePage} data-name="useRef">useRef</a>
           <a className="nav-link" href="#" onClick={changePage} data-name="useMemo">useMemo</a>
+          <a className="nav-link" href="#" onClick={changePage} data-name="useCallback">useCallback</a>
         </nav>
 
         <article>
@@ -57,6 +59,10 @@ function MainComponent() {
 
           {page == 'useMemo' &&
             <MemoComponent />
+          }
+
+          {page == 'useCallback' &&
+            <CallbackComponent />
           }
         </article>
       </main>
