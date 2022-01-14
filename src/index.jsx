@@ -15,6 +15,7 @@ import EffectComponent from './components/EffectComponent.jsx';
 import RefComponent from './components/RefComponent.jsx';
 import MemoComponent from './components/MemoComponent.jsx';
 import CallbackComponent from './components/CallbackComponent.jsx';
+import ContextComponent from './components/ContextComponent.jsx';
 
 /**
  * Root react component.
@@ -38,6 +39,7 @@ function MainComponent() {
           <a className="nav-link" href="#" onClick={changePage} data-name="useRef">useRef</a>
           <a className="nav-link" href="#" onClick={changePage} data-name="useMemo">useMemo</a>
           <a className="nav-link" href="#" onClick={changePage} data-name="useCallback">useCallback</a>
+          <a className="nav-link" href="#" onClick={changePage} data-name="useContext">useContext</a>
         </nav>
 
         <article>
@@ -63,6 +65,10 @@ function MainComponent() {
 
           {page == 'useCallback' &&
             <CallbackComponent />
+          }
+
+          {page == 'useContext' &&
+            <ContextComponent />
           }
         </article>
       </main>
