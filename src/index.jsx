@@ -4,7 +4,7 @@
  * @copyright Alexey Ptitsyn <alexey.ptitsyn@gmail.com>, 2022
  */
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.scss';
@@ -30,58 +30,85 @@ function MainComponent() {
     setPage(e.target.dataset.name);
   }
 
+  /**
+   * @typedef {Object} ComponentsListItem
+   * @property {string} name - Component page name.
+   * @property {string} title - Component page title.
+   * @property {JSX.Element} component - Component itself.
+   */
+
+  /** @type {ComponentsListItem[]} */
+  const components = useMemo(() => {
+    const comps = [
+      {
+        name: 'index',
+        title: 'Index',
+        component: <IntroComponent />
+      },
+      {
+        name: 'useState',
+        title: 'useState',
+        component: <StateComponent />
+      },
+      {
+        name: 'useEffect',
+        title: 'useEffect',
+        component: <EffectComponent />
+      },
+      {
+        name: 'useRef',
+        title: 'useRef',
+        component: <RefComponent />
+      },
+      {
+        name: 'useMemo',
+        title: 'useMemo',
+        component: <MemoComponent />
+      },
+      {
+        name: 'useCallback',
+        title: 'useCallback',
+        component: <CallbackComponent />
+      },
+      {
+        name: 'useContext',
+        title: 'useContext',
+        component: <ContextComponent />
+      },
+      {
+        name: 'useReducer',
+        title: 'useReducer',
+        component: <ReducerComponent />
+      },
+      {
+        name: 'useOwnHook',
+        title: 'useOwnHook',
+        component: <OwnHookComponent />
+      }
+    ];
+    return comps;
+  }, []);
+
+  const links = components.map((item, i) => {
+    return (
+      <a key={i} className="nav-link" href="#" onClick={changePage} data-name={item.name}>{item.title}</a>
+    );
+  });
+
+  const activeItem = components.find((item) => {
+    return item.name == page;
+  });
+
   return (
     <>
       <header>All React hooks example</header>
       <main>
         <nav>
-          <a className="nav-link" href="#" onClick={changePage} data-name="index">Index</a>
-          <a className="nav-link" href="#" onClick={changePage} data-name="useState">useState</a>
-          <a className="nav-link" href="#" onClick={changePage} data-name="useEffect">useEffect</a>
-          <a className="nav-link" href="#" onClick={changePage} data-name="useRef">useRef</a>
-          <a className="nav-link" href="#" onClick={changePage} data-name="useMemo">useMemo</a>
-          <a className="nav-link" href="#" onClick={changePage} data-name="useCallback">useCallback</a>
-          <a className="nav-link" href="#" onClick={changePage} data-name="useContext">useContext</a>
-          <a className="nav-link" href="#" onClick={changePage} data-name="useReducer">useReducer</a>
-          <a className="nav-link" href="#" onClick={changePage} data-name="useOwnHook">useOwnHook</a>
+          { links }
         </nav>
 
         <article>
-          {page == 'index' &&
-            <IntroComponent />
-          }
-
-          {page == 'useState' &&
-            <StateComponent />
-          }
-
-          {page == 'useEffect' &&
-            <EffectComponent />
-          }
-
-          {page == 'useRef' &&
-            <RefComponent />
-          }
-
-          {page == 'useMemo' &&
-            <MemoComponent />
-          }
-
-          {page == 'useCallback' &&
-            <CallbackComponent />
-          }
-
-          {page == 'useContext' &&
-            <ContextComponent />
-          }
-
-          {page == 'useReducer' &&
-            <ReducerComponent />
-          }
-
-          {page == 'useOwnHook' &&
-            <OwnHookComponent />
-          }
+          { activeItem.component }
         </article>
       </main>
       <footer>&copy; 2022, Alexey Ptitsyn</footer>
