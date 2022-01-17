@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 /**
  * @typedef {Object} UseInputReturn
- * @propery {string} value - Current input value.
+ * @property {string} value - Current input value.
  * @property {function} onChange - OnChange callback function.
  */
 
