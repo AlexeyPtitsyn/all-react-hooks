@@ -17,6 +17,7 @@ import MemoComponent from './components/MemoComponent.jsx';
 import CallbackComponent from './components/CallbackComponent.jsx';
 import ContextComponent from './components/ContextComponent.jsx';
 import ReducerComponent from './components/ReducerComponent.jsx';
+import OwnHookComponent from './components/OwnHookComponent.jsx';
 
 /**
  * Root react component.
@@ -42,6 +43,7 @@ function MainComponent() {
           <a className="nav-link" href="#" onClick={changePage} data-name="useCallback">useCallback</a>
           <a className="nav-link" href="#" onClick={changePage} data-name="useContext">useContext</a>
           <a className="nav-link" href="#" onClick={changePage} data-name="useReducer">useReducer</a>
+          <a className="nav-link" href="#" onClick={changePage} data-name="useOwnHook">useOwnHook</a>
         </nav>
 
         <article>
@@ -75,6 +77,10 @@ function MainComponent() {
 
           {page == 'useReducer' &&
             <ReducerComponent />
+          }
+
+          {page == 'useOwnHook' &&
+            <OwnHookComponent />
           }
         </article>
       </main>
